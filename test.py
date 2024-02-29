@@ -68,7 +68,7 @@ calendar = calendar.sort(['Country', 'Date Time'])
 
 header = ['Economic Calendar of Events / Calendrier économique des événements','',
           '','','','Updated:', '=NOW()', '=NOW()']
-header2 = ['Canada','','\\','Month/mois', 'Actual/Actuel', 'Forecast/Prevision', 'Previous/Precedant', 'Revised/Revise']
+header2 = ['Canada','Country','Event','Month/mois', 'Actual/Actuel', 'Forecast/Prevision', 'Previous/Precedant', 'Revised/Revise']
 header3 = ['United States/ETATS-UNIS','','','Month/mois', 'Actual/Actuel', 'Forecast/Prevision', 'Previous/Precedant', 'Revised/Revise']
 header4 = ['Other','','','Month/mois', 'Actual/Actuel', 'Forecast/Prevision', 'Previous/Precedant', 'Revised/Revise']
 footer1 = ['','','','', '', '', 'Briefing Line: 782-7000', '']
@@ -77,9 +77,12 @@ footer2 = ['','','','Pg 9', '', '', 'Rel. 2.8', '']
 d  = calendar.partition_by(by = 'Country', as_dict = True)
 keys = calendar.columns
 values = header2
-dict = dict(zip(keys, values))
+rename = dict(zip(keys, values))
 
-calendar.rename(dict)
+calendar = calendar.rename(rename)
+calendar_dic = calendar.partition_by(by = 'Country', as_dict = True)
+keys = calendar_dic
+
 
 
 with writer.Workbook('calendar_new.xlsx') as wb:
