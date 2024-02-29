@@ -5,7 +5,54 @@ import numpy as np
 import datetime as dt
 
 # Helper Functions
+
+def partition_reorder(calendar: 'pl.dataframe.frame.Dataframe'):
+    """Partitions the calendar frame by country into a dictionary and orders the dictionary
+
+    Args:
+        calendar (pl.dataframe.frame.Dataframe): _description_
+    """
+
+
+    calendar_dic = calendar.partition_by(by = 'Country', as_dict = True)
+
+    my_order = ['CA', 'US', 'EC', 'FR', 'GE', 'IT', 'UK', 'JN', 'CH']
+    new_countries = [x for x in list(calendar_dic.keys()) if x not in my_order]
+    if new_countries:
+        my_order.extend(new_countries)
+        
+    return {k: calendar_dic[k] for k in my_order}
     
+def extend_frames(reordered_dict: 'dict'):
+    """Extends the dataframes with a null row for the purpose of the final xlsx formatting
+
+    Args:
+        reordered_dict (dict): the reordered calendar dictionary of key value 
+    """
+    null_row = [dt.datetime.today().strftime('%Y-%m-%d'),'','Event',
+            'Month/mois', 'Actual/Actuel', 'Forecast/Prevision', 'Previous/Precedant', 'Revised/Revise']
+    header = ['Canada','Country','Event','Month/mois',
+               'Actual/Actuel', 'Forecast/Prevision', 'Previous/Precedant', 'Revised/Revise']
+    new_row = pl.from_dict(dict(zip(header,null_row)))
+    new_row = new_row.with_columns(pl.col("Canada").str.to_datetime("%Y-%m-%d")\
+            .cast(pl.Date))
+                    
+    reordered_dict['CA'].extend(new_row)
+    reordered_dict['US'].extend(new_row)
+
+def index_list(reordered_dict: 'dict'):
+    """Creates a list of the length of entries in each sub countries calendar
+
+    Args:
+        reordered_dict (dict): a dictionary of key, value paires where keys are country codes
+        and values are dataframes of events in that country
+    """
+    
+    index_list = []
+    for val in reordered_dict.values():
+        index_list.append(val.select(pl.count()).item())
+    return index_list
+
 def country_list(calendar :'pl.dataframe.frame.DataFrame'):
     """Function takes a calendar polars dataframe with country column and reformats
     the column into ordered factor column.
@@ -28,22 +75,35 @@ def country_list(calendar :'pl.dataframe.frame.DataFrame'):
         pl.Series(my_order).cast(pl.Categorical)
         calendar=calendar.with_columns(pl.col('Country').cast(pl.Categorical))
     return calendar
-    
-def reshape_calendar(calendar : 'pl.dataframe.frame.DataFrame'):
-    """
-    Reshapes the given calendar by splitting into dictionary and then recombining with sub headers.
+
+def recombine_calendar(reorded_dict):
+    """Recbomines a dictionary of calendar slices into a single calendar
 
     Args:
-        calendar (pl.dataframe.frame.DataFrame): a calendar which is a polars dataframe
+        reorded_dict (_type_): A dictionary partitioned by country for keys and whose values
+        are the corresponding dataframe
     """
-    d = calendar.partition_by(by = 'Country', as_dict = True)
-    header = ['Economic Calendar of Events / Calendrier économique des événements','',
-          '','','','Updated:', '=NOW()', '=NOW()']
-    header2 = ['Canada','','','Month/mois', 'Actual/Actuel', 'Forecast/Prevision', 'Previous/Precedant', 'Revised/Revise']
-    header3 = ['United States/ETATS-UNIS','','','Month/mois', 'Actual/Actuel', 'Forecast/Prevision', 'Previous/Precedant', 'Revised/Revise']
-    header4 = ['Other','','','Month/mois', 'Actual/Actuel', 'Forecast/Prevision', 'Previous/Precedant', 'Revised/Revise']
-    footer1 = ['','','','', '', '', 'Briefing Line: 782-7000', '']
-    footer2 = ['','','','Pg 9', '', '', 'Rel. 2.8', '']
+    my_order = ['CA', 'US', 'EC', 'FR', 'GE', 'IT', 'UK', 'JN', 'CH'] #
+    new_countries = [x for x in list(reordered_dict.keys()) if x not in my_order]
+    if new_countries:
+        my_order.extend(new_countries)
+    new_calendar = reordered_dict[my_order[0]].clear()
+    for val in my_order:
+        new_calendar.extend(reordered_dict[val])
+    return new_calendar
+
+def rename_calendar(calendar: 'pl.dataframe.frame.DataFrame'):
+    """Renames the columns of the dataframe according to the desired style
+
+    Args:
+        calendar (pl.dataframe.frame.DataFrame): polars dataframe of country eco calendars
+    """
+    keys = calendar.columns
+    values = ['Canada','Country','Event','Month/mois',
+               'Actual/Actuel', 'Forecast/Prevision', 'Previous/Precedant', 'Revised/Revise']
+    
+    ren = dict(zip(keys, values))
+    return calendar.rename(ren)  
     
 # import calendar
 calendar_raw = pl.read_csv('bbg_cal.csv')
@@ -62,34 +122,35 @@ calendar = calendar.with_columns(pl.col("Date Time")\
         .cast(pl.Date))\
         .drop('Relevance')
 
-calendar = country_list(calendar)
-
 calendar = calendar.sort(['Country', 'Date Time'])
 
 header = ['Economic Calendar of Events / Calendrier économique des événements','',
           '','','','Updated:', '=NOW()', '=NOW()']
-header2 = ['Canada','Country','Event','Month/mois', 'Actual/Actuel', 'Forecast/Prevision', 'Previous/Precedant', 'Revised/Revise']
+header2 = ['Canada','Country','Event','Month/mois',
+               'Actual/Actuel', 'Forecast/Prevision', 'Previous/Precedant', 'Revised/Revise']
 header3 = ['United States/ETATS-UNIS','','','Month/mois', 'Actual/Actuel', 'Forecast/Prevision', 'Previous/Precedant', 'Revised/Revise']
 header4 = ['Other','','','Month/mois', 'Actual/Actuel', 'Forecast/Prevision', 'Previous/Precedant', 'Revised/Revise']
 footer1 = ['','','','', '', '', 'Briefing Line: 782-7000', '']
 footer2 = ['','','','Pg 9', '', '', 'Rel. 2.8', '']
 
-d  = calendar.partition_by(by = 'Country', as_dict = True)
-keys = calendar.columns
-values = header2
-rename = dict(zip(keys, values))
+calendar = rename_calendar(calendar)
 
-calendar = calendar.rename(rename)
-calendar_dic = calendar.partition_by(by = 'Country', as_dict = True)
-keys = calendar_dic
-
-
+reordered_dict = partition_reorder(calendar)
+index = index_list(reordered_dict)
+extend_frames(reordered_dict)
+new_calendar = recombine_calendar(reordered_dict)
+new_calendar.row()
+sum(index)
 
 with writer.Workbook('calendar_new.xlsx') as wb:
     # Create a new worksheet
     worksheet = wb.add_worksheet()
     # write the header for the calendar
     worksheet.write_row('A1', header)
-    worksheet.write_row('A2',header2)
     #Write Polars data to the worksheet
-    calendar.write_excel(wb, worksheet = 'Sheet1', dtype_formats={pl.Date: "[$-en-US]d-mmm;@"}, autofit = True, position = 'A3')
+    new_calendar.write_excel(wb, worksheet = 'Sheet1',
+                         dtype_formats={pl.Date: "[$-en-US]d-mmm;@"}, autofit = True, position = 'A2')
+    worksheet.write_row(index[0]+2,0,data = header3)
+    worksheet.write_row(index[0]+index[1]+3,0,data = header4)
+    worksheet.write_row(sum(index)+4, 0, data = footer1)
+    worksheet.write_row(sum(index)+5, 0, data = footer2)
