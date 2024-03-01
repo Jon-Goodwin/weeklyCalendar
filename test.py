@@ -137,9 +137,15 @@ CaD_col= ['CANADA','','','Month / mois',
 calendar = rename_calendar(calendar)
 
 reordered_dict = partition_reorder(calendar)
+
+dt_list = sorted(reordered_dict['CA'].select(pl.col('Canada')).unique().to_series().to_list())
+dt_list_odd = dt_list[1::2]
+reordered_dict['CA'].select('Canada').apply(lambda x: True if x in dt_list_odd else False).with_row_count()
+
 index = index_list(reordered_dict)
 extend_frames(reordered_dict)
 new_calendar = recombine_calendar(reordered_dict)
+
 
 with writer.Workbook('calendar_new.xlsx') as wb:
     # Create a new worksheet
@@ -192,3 +198,4 @@ with writer.Workbook('calendar_new.xlsx') as wb:
     worksheet.write_formula(0,7, '=NOW()', cell_format = format3)
     worksheet.write_formula(0,6, '=NOW()', cell_format = format4)
     worksheet.write_string(0,5, 'Updated:', cell_format = format5)
+    
