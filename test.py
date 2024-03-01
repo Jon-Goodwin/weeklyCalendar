@@ -1,7 +1,5 @@
-import pandas as pd
 import polars as pl
 import xlsxwriter as writer
-import numpy as np
 import datetime as dt
 
 # Helper Functions
@@ -99,8 +97,8 @@ def rename_calendar(calendar: 'pl.dataframe.frame.DataFrame'):
         calendar (pl.dataframe.frame.DataFrame): polars dataframe of country eco calendars
     """
     keys = calendar.columns
-    values = ['Canada','Country','Event','Month/mois',
-               'Actual/Actuel', 'Forecast/Prevision', 'Previous/Precedant', 'Revised/Revise']
+    values = ['CANADA','Country','Event','Month / mois',
+               'Actual / Actuel', 'Forecast / Prévision', 'Previous / Précédant', 'Revised / Révisé']
     
     ren = dict(zip(keys, values))
     return calendar.rename(ren)  
@@ -126,31 +124,71 @@ calendar = calendar.sort(['Country', 'Date Time'])
 
 header = ['Economic Calendar of Events / Calendrier économique des événements','',
           '','','','Updated:', '=NOW()', '=NOW()']
-header2 = ['Canada','Country','Event','Month/mois',
-               'Actual/Actuel', 'Forecast/Prevision', 'Previous/Precedant', 'Revised/Revise']
-header3 = ['United States/ETATS-UNIS','','','Month/mois', 'Actual/Actuel', 'Forecast/Prevision', 'Previous/Precedant', 'Revised/Revise']
-header4 = ['Other','','','Month/mois', 'Actual/Actuel', 'Forecast/Prevision', 'Previous/Precedant', 'Revised/Revise']
+header2 = ['CANADA','Country','Event','Month / mois',
+               'Actual / Actuel', 'Forecast / Prévision', 'Previous / Précédant', 'Revised / Révisé']
+header3 = ['UNITED STATES/ETATS-UNIS','','','Month / mois',
+               'Actual / Actuel', 'Forecast / Prévision', 'Previous / Précédant', 'Revised / Révisé']
+header4 = ['OTHER','','','Month / mois',
+               'Actual / Actuel', 'Forecast / Prévision', 'Previous / Précédant', 'Revised / Révisé']
 footer1 = ['','','','', '', '', 'Briefing Line: 782-7000', '']
 footer2 = ['','','','Pg 9', '', '', 'Rel. 2.8', '']
-
+CaD_col= ['CANADA','','','Month / mois',
+               'Actual / Actuel', 'Forecast / Prévision', 'Previous / Précédant', 'Revised / Révisé']
 calendar = rename_calendar(calendar)
 
 reordered_dict = partition_reorder(calendar)
 index = index_list(reordered_dict)
 extend_frames(reordered_dict)
 new_calendar = recombine_calendar(reordered_dict)
-new_calendar.row()
-sum(index)
 
 with writer.Workbook('calendar_new.xlsx') as wb:
     # Create a new worksheet
     worksheet = wb.add_worksheet()
     # write the header for the calendar
-    worksheet.write_row('A1', header)
+    format3 = wb.add_format({'num_format': 'h:mm AM/PM','bg_color': '#333399',"font": "Arial",
+                             'bold': True, 'font_color': '#FFFFFF','font_size': 12, 'align': 'center'})
+    format4 = wb.add_format({'num_format': 'dd-mmm-yy','bg_color': '#333399',"font": "Arial",
+                              'font_color': '#FFFFFF','font_size': 12, 'align': 'center'})
+    format5 = wb.add_format({'bg_color': '#333399',"font": "Arial",
+                              'font_color': '#FFFFFF','font_size': 12, 'align': 'center'})
+    format_header = wb.add_format({ 'bg_color': '#333399', 'bold': True,"font": "Arial",
+                            'font_color': '#FFFFFF','font_size': 12})
+    bold_column = wb.add_format({'bold': True,"font": "Arial", 'font_size': 12})
+    size_column = wb.add_format({'font_size': 12,"font": "Arial"})
+    footer_format = wb.add_format({ 'bg_color': '#333399',"font": "Arial",
+                            'font_color': '#FFFFFF','font_size': 12})
+    format = wb.add_format({ 'bg_color': '#808080', 'bold': True,"font": "Arial",
+                            'font_color': '#FFFFFF','font_size': 12})
+    worksheet.write_row('A1', header, cell_format = format_header)
     #Write Polars data to the worksheet
     new_calendar.write_excel(wb, worksheet = 'Sheet1',
-                         dtype_formats={pl.Date: "[$-en-US]d-mmm;@"}, autofit = True, position = 'A2')
-    worksheet.write_row(index[0]+2,0,data = header3)
-    worksheet.write_row(index[0]+index[1]+3,0,data = header4)
-    worksheet.write_row(sum(index)+4, 0, data = footer1)
-    worksheet.write_row(sum(index)+5, 0, data = footer2)
+                         dtype_formats={pl.Date: "[$-en-US]d-mmm;@"}, autofilter= False,
+                         autofit = True, position = 'A3', include_header = False, hide_gridlines= True,
+                         column_formats= {"Actual/Actuel": {'align': 'center',
+                                                            "bold": True, 'font_size': 12, "font": "Arial"},
+                                          'Country': {'align': 'center',
+                                                      'bold': True, 'font_size': 12, "font": "Arial"},
+                                          'Event': {'align': 'center',
+                                                    'font_size': 12, "font": "Arial"},
+                                          'Canada': {'align': 'center',
+                                                     'font_size': 12, "font": "Arial"},
+                                          'Month/mois': {'align': 'center',
+                                                         'font_size': 12,"font": "Arial"}, 
+                                          'Forecast/Prevision': {'align': 'center',
+                                                                 'font_size': 12,"font": "Arial"}, 
+                                          'Previous/Precedant': {'align': 'center',
+                                                                 'font_size': 12, "font": "Arial"}, 
+                                          'Revised/Revise': {'align': 'center',
+                                                             'font_size': 12,"font": "Arial"}})
+    worksheet.write_row(1,0, data = CaD_col, cell_format = format)
+    worksheet.write_row(index[0]+2,0,data = header3, cell_format = format)
+    worksheet.write_row(index[0]+index[1]+3,0,data = header4, cell_format = format)
+    worksheet.write_row(sum(index)+4, 0, data = footer1, cell_format = footer_format)
+    worksheet.write_row(sum(index)+5, 0, data = footer2, cell_format = footer_format)
+    worksheet.set_column(0,0, 15)
+    worksheet.set_column(1,1, 10)
+    worksheet.set_column(2,2, 40)
+    worksheet.set_column(3,10, 25)
+    worksheet.write_formula(0,7, '=NOW()', cell_format = format3)
+    worksheet.write_formula(0,6, '=NOW()', cell_format = format4)
+    worksheet.write_string(0,5, 'Updated:', cell_format = format5)
