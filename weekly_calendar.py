@@ -1,6 +1,7 @@
 import polars as pl
 import xlsxwriter as writer
 import datetime as dt
+import pandas as pd
 
 # Helper Functions
 
@@ -29,10 +30,10 @@ def extend_frames(reordered_dict: 'dict'):
     """
     null_row = [dt.datetime.today().strftime('%Y-%m-%d'),'','Event',
             'Month/mois', 'Actual/Actuel', 'Forecast/Prevision', 'Previous/Precedant', 'Revised/Revise']
-    header = ['Canada','Country','Event','Month/mois',
-               'Actual/Actuel', 'Forecast/Prevision', 'Previous/Precedant', 'Revised/Revise']
+    header = ['CANADA','Country','Event','Month / mois',
+               'Actual / Actuel', 'Forecast / Prévision', 'Previous / Précédant', 'Revised / Révisé']
     new_row = pl.from_dict(dict(zip(header,null_row)))
-    new_row = new_row.with_columns(pl.col("Canada").str.to_datetime("%Y-%m-%d")\
+    new_row = new_row.with_columns(pl.col("CANADA").str.to_datetime("%Y-%m-%d")\
             .cast(pl.Date))
                     
     reordered_dict['CA'].extend(new_row)
@@ -173,59 +174,108 @@ index = list(index.values())
 extend_frames(reordered_dict)
 new_calendar = recombine_calendar(reordered_dict)
 
+df1 = new_calendar.to_pandas()
+df1.dtypes
+# Create a Pandas Excel writer using XlsxWriter as the engine.
+writer = pd.ExcelWriter('test_book.xlsx', engine='xlsxwriter')
 
-with writer.Workbook('calendar_new.xlsx') as wb:
-    # Create a new worksheet
-    worksheet = wb.add_worksheet()
-    # write the header for the calendar
-    format3 = wb.add_format({'num_format': 'h:mm AM/PM','bg_color': '#333399',"font": "Arial",
+# Convert the dataframe to an XlsxWriter Excel object.
+df1.to_excel(writer, sheet_name='Sheet1', startrow= 2, header=False, index = False)
+
+# Get the xlsxwriter objects from the dataframe writer object.
+wb  = writer.book
+worksheet = writer.sheets['Sheet1']
+
+format3 = wb.add_format({'num_format': 'h:mm AM/PM','bg_color': '#333399',"font": "Arial",
                              'bold': True, 'font_color': '#FFFFFF','font_size': 12, 'align': 'center'})
-    format4 = wb.add_format({'num_format': 'dd-mmm-yy','bg_color': '#333399',"font": "Arial",
+format4 = wb.add_format({'num_format': 'dd-mmm-yy','bg_color': '#333399',"font": "Arial",
                               'font_color': '#FFFFFF','font_size': 12, 'align': 'center'})
-    format5 = wb.add_format({'bg_color': '#333399',"font": "Arial",
+format5 = wb.add_format({'bg_color': '#333399',"font": "Arial",
                               'font_color': '#FFFFFF','font_size': 12, 'align': 'center'})
-    format_header = wb.add_format({ 'bg_color': '#333399', 'bold': True,"font": "Arial",
+date_column = wb.add_format({'num_format': '[$-en-US]d-mmm;@'})
+format_header = wb.add_format({ 'bg_color': '#333399', 'bold': True,"font": "Arial",
                             'font_color': '#FFFFFF','font_size': 12})
-    bold_column = wb.add_format({'bold': True,"font": "Arial", 'font_size': 12})
-    size_column = wb.add_format({'font_size': 12,"font": "Arial"})
-    footer_format = wb.add_format({ 'bg_color': '#333399',"font": "Arial",
+bold_column = wb.add_format({'bold': True,"font": "Arial", 'font_size': 12})
+size_column = wb.add_format({'font_size': 12,"font": "Arial"})
+footer_format = wb.add_format({ 'bg_color': '#333399',"font": "Arial",
                             'font_color': '#FFFFFF','font_size': 12})
-    format = wb.add_format({ 'bg_color': '#808080', 'bold': True,"font": "Arial",
+format = wb.add_format({ 'bg_color': '#808080', 'bold': True,"font": "Arial",
                             'font_color': '#FFFFFF','font_size': 12})
-    worksheet.write_row('A1', header, cell_format = format_header)
-    data_format1 = wb.add_format({'bg_color': '#FFC7CE'})
-    data_format2 = wb.add_format({'bg_color': '#00C7CE'})
-    #Write Polars data to the worksheet
-    new_calendar.write_excel(wb, worksheet = 'Sheet1',
-                         dtype_formats={pl.Date: "[$-en-US]d-mmm;@"}, autofilter= False,
-                         autofit = True, position = 'A3', include_header = False, hide_gridlines= True,
-                         column_formats= {"Actual/Actuel": {'align': 'center',
-                                                            "bold": True, 'font_size': 12, "font": "Arial"},
-                                          'Country': {'align': 'center',
-                                                      'bold': True, 'font_size': 12, "font": "Arial"},
-                                          'Event': {'align': 'center',
-                                                    'font_size': 12, "font": "Arial"},
-                                          'Canada': {'align': 'center',
-                                                     'font_size': 12, "font": "Arial"},
-                                          'Month/mois': {'align': 'center',
-                                                         'font_size': 12,"font": "Arial"}, 
-                                          'Forecast/Prevision': {'align': 'center',
-                                                                 'font_size': 12,"font": "Arial"}, 
-                                          'Previous/Precedant': {'align': 'center',
-                                                                 'font_size': 12, "font": "Arial"}, 
-                                          'Revised/Revise': {'align': 'center',
-                                                             'font_size': 12,"font": "Arial"}})
-    worksheet.write_row(1,0, data = CaD_col, cell_format = format)
-    worksheet.write_row(index[0]+2,0,data = header3, cell_format = format)
-    worksheet.write_row(index[0]+index[1]+3,0,data = header4, cell_format = format)
-    worksheet.write_row(sum(index)+4, 0, data = footer1, cell_format = footer_format)
-    worksheet.write_row(sum(index)+5, 0, data = footer2, cell_format = footer_format)
-    worksheet.set_column(0,0, 15)
-    worksheet.set_column(1,1, 10)
-    worksheet.set_column(2,2, 40)
-    worksheet.set_column(3,10, 25)
-    worksheet.write_formula(0,7, '=NOW()', cell_format = format3)
-    worksheet.write_formula(0,6, '=NOW()', cell_format = format4)
-    worksheet.write_string(0,5, 'Updated:', cell_format = format5)
-    for row in rows_color_CAUS['CA']:
-        worksheet.set_row(row+2, cell_format=data_format1)
+data_format1 = wb.add_format({'bg_color': '#FFC7CE'})
+for row in rows_color_CAUS['CA']:
+    worksheet.set_row(row+2, cell_format=data_format1)
+worksheet.write_row('A1', header, cell_format = format_header)
+worksheet.write_row(1,0, data = CaD_col, cell_format = format)
+worksheet.write_row(index[0]+2,0,data = header3, cell_format = format)
+worksheet.write_row(index[0]+index[1]+3,0,data = header4, cell_format = format)
+worksheet.write_row(sum(index)+4, 0, data = footer1, cell_format = footer_format)
+worksheet.write_row(sum(index)+5, 0, data = footer2, cell_format = footer_format)
+worksheet.set_column(0,0, 15, cell_format = date_column)
+worksheet.set_column(1,1, 10, cell_format = bold_column)
+worksheet.set_column(2,2, 40, cell_format = size_column)
+worksheet.set_column(3,3, 15, cell_format = size_column)
+worksheet.set_column(4,4, 25, cell_format = bold_column)
+worksheet.set_column(5,10, 25, cell_format = size_column)
+worksheet.write_formula(0,7, '=NOW()', cell_format = format3)
+worksheet.write_formula(0,6, '=NOW()', cell_format = format4)
+worksheet.write_string(0,5, 'Updated:', cell_format = format5)
+
+writer.close()
+
+# Polars xlsxwriter engine sets a cell format for the dataframe making this code not usable until the engine changes
+
+# with writer.Workbook('calendar_new.xlsx') as wb:
+#     # Create a new worksheet
+#     worksheet = wb.add_worksheet()
+#     # write the header for the calendar
+#     format3 = wb.add_format({'num_format': 'h:mm AM/PM','bg_color': '#333399',"font": "Arial",
+#                              'bold': True, 'font_color': '#FFFFFF','font_size': 12, 'align': 'center'})
+#     format4 = wb.add_format({'num_format': 'dd-mmm-yy','bg_color': '#333399',"font": "Arial",
+#                               'font_color': '#FFFFFF','font_size': 12, 'align': 'center'})
+#     format5 = wb.add_format({'bg_color': '#333399',"font": "Arial",
+#                               'font_color': '#FFFFFF','font_size': 12, 'align': 'center'})
+#     format_header = wb.add_format({ 'bg_color': '#333399', 'bold': True,"font": "Arial",
+#                             'font_color': '#FFFFFF','font_size': 12})
+#     bold_column = wb.add_format({'bold': True,"font": "Arial", 'font_size': 12})
+#     size_column = wb.add_format({'font_size': 12,"font": "Arial"})
+#     footer_format = wb.add_format({ 'bg_color': '#333399',"font": "Arial",
+#                             'font_color': '#FFFFFF','font_size': 12})
+#     format = wb.add_format({ 'bg_color': '#808080', 'bold': True,"font": "Arial",
+#                             'font_color': '#FFFFFF','font_size': 12})
+#     worksheet.write_row('A1', header, cell_format = format_header)
+#     data_format1 = wb.add_format({'bg_color': '#FFC7CE'})
+#     data_format2 = wb.add_format({'bg_color': '#00C7CE'})
+#     #Write Polars data to the worksheet
+#     new_calendar.write_excel(wb, worksheet = 'Sheet1',
+#                          dtype_formats={pl.Date: "[$-en-US]d-mmm;@"}, autofilter= False,
+#                          autofit = True, position = 'A3', include_header = False, hide_gridlines= True,
+#                          column_formats= {"Actual/Actuel": {'align': 'center',
+#                                                             "bold": True, 'font_size': 12, "font": "Arial"},
+#                                           'Country': {'align': 'center',
+#                                                       'bold': True, 'font_size': 12, "font": "Arial"},
+#                                           'Event': {'align': 'center',
+#                                                     'font_size': 12, "font": "Arial"},
+#                                           'Canada': {'align': 'center',
+#                                                      'font_size': 12, "font": "Arial"},
+#                                           'Month/mois': {'align': 'center',
+#                                                          'font_size': 12,"font": "Arial"}, 
+#                                           'Forecast/Prevision': {'align': 'center',
+#                                                                  'font_size': 12,"font": "Arial"}, 
+#                                           'Previous/Precedant': {'align': 'center',
+#                                                                  'font_size': 12, "font": "Arial"}, 
+#                                           'Revised/Revise': {'align': 'center',
+#                                                              'font_size': 12,"font": "Arial"}})
+#     worksheet.write_row(1,0, data = CaD_col, cell_format = format)
+#     worksheet.write_row(index[0]+2,0,data = header3, cell_format = format)
+#     worksheet.write_row(index[0]+index[1]+3,0,data = header4, cell_format = format)
+#     worksheet.write_row(sum(index)+4, 0, data = footer1, cell_format = footer_format)
+#     worksheet.write_row(sum(index)+5, 0, data = footer2, cell_format = footer_format)
+#     worksheet.set_column(0,0, 15)
+#     worksheet.set_column(1,1, 10)
+#     worksheet.set_column(2,2, 40)
+#     worksheet.set_column(3,10, 25)
+#     worksheet.write_formula(0,7, '=NOW()', cell_format = format3)
+#     worksheet.write_formula(0,6, '=NOW()', cell_format = format4)
+#     worksheet.write_string(0,5, 'Updated:', cell_format = format5)
+#     for row in rows_color_CAUS['CA']:
+#         worksheet.set_row(row+2, cell_format=data_format1)
