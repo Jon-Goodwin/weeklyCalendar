@@ -101,7 +101,35 @@ def rename_calendar(calendar: 'pl.dataframe.frame.DataFrame'):
                'Actual / Actuel', 'Forecast / Prévision', 'Previous / Précédant', 'Revised / Révisé']
     
     ren = dict(zip(keys, values))
-    return calendar.rename(ren)  
+    return calendar.rename(ren)
+
+def color_index_finder(calendar: 'pl.dataframe.frame.DataFrame') -> dict:
+    """Takes in a partitioned dictionary of the calendars by country and outputs a list of indexes to be
+    recolored in the xlsxwriter step
+
+    Args:
+        calendar (pl.dataframe.frame.DataFrame): _description_
+
+    Returns:
+        dict: a list lists containing integers corresponding to the dictionary they
+    """
+    new_dict = dict.fromkeys(['CA', 'US'],None)
+
+    for k in new_dict.keys():
+        dt_list = sorted(calendar[k].select(pl.col('CANADA')).unique().to_series().to_list())
+        dt_list_odd = dt_list[1::2]
+
+        row_numbers = calendar[k].with_columns(
+        pl.when(pl.col("CANADA").is_in(dt_list_odd))
+        .then(pl.arange(0, pl.col("CANADA").len()))
+        .otherwise(None)
+        .alias("row_numbers")
+        )["row_numbers"].to_list()
+        
+        filtered_list = [item for item in row_numbers if item is not None]
+        new_dict[k] = filtered_list
+        
+    return new_dict
     
 # import calendar
 calendar_raw = pl.read_csv('bbg_cal.csv')
@@ -132,17 +160,16 @@ header4 = ['OTHER','','','Month / mois',
                'Actual / Actuel', 'Forecast / Prévision', 'Previous / Précédant', 'Revised / Révisé']
 footer1 = ['','','','', '', '', 'Briefing Line: 782-7000', '']
 footer2 = ['','','','Pg 9', '', '', 'Rel. 2.8', '']
-CaD_col= ['CANADA','','','Month / mois',
+CaD_col = ['CANADA','','','Month / mois',
                'Actual / Actuel', 'Forecast / Prévision', 'Previous / Précédant', 'Revised / Révisé']
 calendar = rename_calendar(calendar)
 
 reordered_dict = partition_reorder(calendar)
 
-dt_list = sorted(reordered_dict['CA'].select(pl.col('Canada')).unique().to_series().to_list())
-dt_list_odd = dt_list[1::2]
-reordered_dict['CA'].select('Canada').apply(lambda x: True if x in dt_list_odd else False).with_row_count()
+rows_color_CAUS = color_index_finder(reordered_dict)
 
-index = index_list(reordered_dict)
+index = dict(zip(reordered_dict.keys(),index_list(reordered_dict)))
+index = list(index.values())
 extend_frames(reordered_dict)
 new_calendar = recombine_calendar(reordered_dict)
 
@@ -166,6 +193,8 @@ with writer.Workbook('calendar_new.xlsx') as wb:
     format = wb.add_format({ 'bg_color': '#808080', 'bold': True,"font": "Arial",
                             'font_color': '#FFFFFF','font_size': 12})
     worksheet.write_row('A1', header, cell_format = format_header)
+    data_format1 = wb.add_format({'bg_color': '#FFC7CE'})
+    data_format2 = wb.add_format({'bg_color': '#00C7CE'})
     #Write Polars data to the worksheet
     new_calendar.write_excel(wb, worksheet = 'Sheet1',
                          dtype_formats={pl.Date: "[$-en-US]d-mmm;@"}, autofilter= False,
@@ -198,4 +227,5 @@ with writer.Workbook('calendar_new.xlsx') as wb:
     worksheet.write_formula(0,7, '=NOW()', cell_format = format3)
     worksheet.write_formula(0,6, '=NOW()', cell_format = format4)
     worksheet.write_string(0,5, 'Updated:', cell_format = format5)
-    
+    for row in rows_color_CAUS['CA']:
+        worksheet.set_row(row+2, cell_format=data_format1)
