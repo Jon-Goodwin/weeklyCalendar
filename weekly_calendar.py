@@ -143,11 +143,9 @@ calendar = calendar_raw.select(pl.col('Date Time',calendar_raw.columns[1],\
         .rename({calendar_raw.columns[1] : "Country",calendar_raw.columns[5] : 'Month'})\
         .filter(pl.col('Relevance') >= 50)\
         .sort(['Country', 'Date Time'])
-# convert datetime string column to date format        
-calendar = calendar.with_columns(pl.col("Date Time")\
-    .str.to_datetime("%m/%d/%Y %H:%M")\
-        .cast(pl.Date))\
-        .drop('Relevance')
+# convert datetime string column to date format  
+calendar = calendar.with_columns(pl.col("Date Time").str.slice(0,10)).drop('Relevance') #some danger here
+calendar = calendar.with_columns(pl.col("Date Time").str.strptime(pl.Date, "%m/%d/%Y", strict=False))
 
 calendar = calendar.sort(['Country', 'Date Time'])
 
@@ -173,11 +171,14 @@ index = dict(zip(reordered_dict.keys(),index_list(reordered_dict)))
 index = list(index.values())
 extend_frames(reordered_dict)
 new_calendar = recombine_calendar(reordered_dict)
+excel_base_date = pl.date('1900','1','1')
+new_calendar = new_calendar.with_columns(
+    pl.col("CANADA").cast(pl.Datetime).dt.timestamp("ms").truediv(86400000).add(25569).alias("CANADA"))
 
 df1 = new_calendar.to_pandas()
 df1.dtypes
 # Create a Pandas Excel writer using XlsxWriter as the engine.
-writer = pd.ExcelWriter('test_book.xlsx', engine='xlsxwriter')
+writer = pd.ExcelWriter('new_calendar.xlsx', engine='xlsxwriter')
 
 # Convert the dataframe to an XlsxWriter Excel object.
 df1.to_excel(writer, sheet_name='Sheet1', startrow= 2, header=False, index = False)
@@ -185,14 +186,15 @@ df1.to_excel(writer, sheet_name='Sheet1', startrow= 2, header=False, index = Fal
 # Get the xlsxwriter objects from the dataframe writer object.
 wb  = writer.book
 worksheet = writer.sheets['Sheet1']
-
+#Create formats
 format3 = wb.add_format({'num_format': 'h:mm AM/PM','bg_color': '#333399',"font": "Arial",
                              'bold': True, 'font_color': '#FFFFFF','font_size': 12, 'align': 'center'})
 format4 = wb.add_format({'num_format': 'dd-mmm-yy','bg_color': '#333399',"font": "Arial",
                               'font_color': '#FFFFFF','font_size': 12, 'align': 'center'})
 format5 = wb.add_format({'bg_color': '#333399',"font": "Arial",
                               'font_color': '#FFFFFF','font_size': 12, 'align': 'center'})
-date_column = wb.add_format({'num_format': '[$-en-US]d-mmm;@'})
+date_column = wb.add_format({'num_format': '[$-en-US]d-mmm;@',"font": "Arial", 'font_size': 12})
+date_column1 = wb.add_format({'num_format': '[$-en-US]d-mmm;@', 'bg_color': '#F2F2F2', "font": "Arial", 'font_size': 12})
 format_header = wb.add_format({ 'bg_color': '#333399', 'bold': True,"font": "Arial",
                             'font_color': '#FFFFFF','font_size': 12})
 bold_column = wb.add_format({'bold': True,"font": "Arial", 'font_size': 12})
@@ -201,24 +203,54 @@ footer_format = wb.add_format({ 'bg_color': '#333399',"font": "Arial",
                             'font_color': '#FFFFFF','font_size': 12})
 format = wb.add_format({ 'bg_color': '#808080', 'bold': True,"font": "Arial",
                             'font_color': '#FFFFFF','font_size': 12})
-data_format1 = wb.add_format({'bg_color': '#FFC7CE'})
-for row in rows_color_CAUS['CA']:
-    worksheet.set_row(row+2, cell_format=data_format1)
+data_format1 = wb.add_format({'bg_color': '#F2F2F2','font_size': 12,"font": "Arial"})
+
+#write headers and footers
 worksheet.write_row('A1', header, cell_format = format_header)
 worksheet.write_row(1,0, data = CaD_col, cell_format = format)
 worksheet.write_row(index[0]+2,0,data = header3, cell_format = format)
 worksheet.write_row(index[0]+index[1]+3,0,data = header4, cell_format = format)
 worksheet.write_row(sum(index)+4, 0, data = footer1, cell_format = footer_format)
 worksheet.write_row(sum(index)+5, 0, data = footer2, cell_format = footer_format)
+
+#set column widths
 worksheet.set_column(0,0, 15, cell_format = date_column)
 worksheet.set_column(1,1, 10, cell_format = bold_column)
 worksheet.set_column(2,2, 40, cell_format = size_column)
 worksheet.set_column(3,3, 15, cell_format = size_column)
 worksheet.set_column(4,4, 25, cell_format = bold_column)
 worksheet.set_column(5,10, 25, cell_format = size_column)
+
+#set formulas in header
 worksheet.write_formula(0,7, '=NOW()', cell_format = format3)
 worksheet.write_formula(0,6, '=NOW()', cell_format = format4)
 worksheet.write_string(0,5, 'Updated:', cell_format = format5)
+
+#color rows
+for row in rows_color_CAUS['CA']:
+    worksheet.set_row(row+2, cell_format=data_format1)
+    #when writing the conditional formatting index starts at 1, so we add 1
+    worksheet.conditional_format(f'A{row+3}', {'type': 'no_errors',
+                                          'format': date_column1})
+for row in rows_color_CAUS['US']:
+    worksheet.set_row(row+3+index[0], cell_format=data_format1)
+    worksheet.conditional_format(f'A{row+4+index[0]}', {'type': 'no_errors',
+                                          'format': date_column1})
+#color bg of all 'Other' countries
+worksheet.conditional_format('A1:A200', {'type': 'no_errors',
+                                          'format': date_column})
+for i in range(2,len(index),2):
+    for row in range(sum(index[:i])+4,sum(index[:i+1])+4):
+        worksheet.set_row(row, cell_format=data_format1)
+        worksheet.conditional_format(f'A{sum(index[:i])+5}:A{sum(index[:i+1])+4}', {'type': 'no_errors',
+                                          'format': date_column1})
+
+
+#set conditional formatting
+worksheet.conditional_format('E1:E200', {'type': 'no_errors',
+                                          'format': bold_column})
+worksheet.conditional_format('B1:B200', {'type': 'no_errors',
+                                          'format': bold_column})
 
 writer.close()
 
