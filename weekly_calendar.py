@@ -3,6 +3,9 @@ import xlsxwriter as writer
 import datetime as dt
 import pandas as pd
 
+# This script likely needs some cleanup still, there are also some dangers around the countries whose relevance is >=50.
+# Also some functions contain hardcoded values imbedded, could use some abstraction
+
 # Helper Functions
 
 def partition_reorder(calendar: 'pl.dataframe.frame.Dataframe'):
