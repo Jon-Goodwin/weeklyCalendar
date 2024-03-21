@@ -186,6 +186,7 @@ df1.to_excel(writer, sheet_name='Sheet1', startrow= 2, header=False, index = Fal
 # Get the xlsxwriter objects from the dataframe writer object.
 wb  = writer.book
 worksheet = writer.sheets['Sheet1']
+
 #Create formats
 format3 = wb.add_format({'num_format': 'h:mm AM/PM','bg_color': '#333399',"font": "Arial",
                              'bold': True, 'font_color': '#FFFFFF','font_size': 12, 'align': 'center'})
@@ -197,6 +198,10 @@ date_column = wb.add_format({'num_format': '[$-en-US]d-mmm;@',"font": "Arial", '
 date_column1 = wb.add_format({'num_format': '[$-en-US]d-mmm;@', 'bg_color': '#F2F2F2', "font": "Arial", 'font_size': 12})
 format_header = wb.add_format({ 'bg_color': '#333399', 'bold': True,"font": "Arial",
                             'font_color': '#FFFFFF','font_size': 12})
+time_format1 = wb.add_format({'num_format': 'h:mm AM/PM','bg_color': '#333399', 'bold': True,"font": "Arial",
+                            'font_color': '#FFFFFF','font_size': 12})
+time_format2 = wb.add_format({'num_format': 'dd-mmm-yy','bg_color': '#333399', 'bold': True,"font": "Arial",
+                            'font_color': '#FFFFFF','font_size': 12})
 bold_column = wb.add_format({'bold': True,"font": "Arial", 'font_size': 12})
 size_column = wb.add_format({'font_size': 12,"font": "Arial"})
 footer_format = wb.add_format({ 'bg_color': '#333399',"font": "Arial",
@@ -207,6 +212,8 @@ data_format1 = wb.add_format({'bg_color': '#F2F2F2','font_size': 12,"font": "Ari
 
 #write headers and footers
 worksheet.write_row('A1', header, cell_format = format_header)
+worksheet.write_formula('H1', '=NOW()', cell_format = time_format1)
+worksheet.write_formula('G1', '=NOW()', cell_format = time_format2)
 worksheet.write_row(1,0, data = CaD_col, cell_format = format)
 worksheet.write_row(index[0]+2,0,data = header3, cell_format = format)
 worksheet.write_row(index[0]+index[1]+3,0,data = header4, cell_format = format)
