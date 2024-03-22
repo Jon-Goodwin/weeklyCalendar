@@ -3,8 +3,10 @@ import xlsxwriter as writer
 import datetime as dt
 import pandas as pd
 
-# This script likely needs some cleanup still, there are also some dangers around the countries whose relevance is >=50.
-# Also some functions contain hardcoded values imbedded, could use some abstraction
+# This script needs some cleanup still, if it breaks it's likely around new countries having relevance >= 50 or either
+# Canada or the US not having data that week which would break the process.
+# Also some functions contain hardcoded values could use some abstraction and could use some cleanup where the script
+# builds the excel sheet
 
 # Helper Functions
 
@@ -198,7 +200,8 @@ format4 = wb.add_format({'num_format': 'dd-mmm-yy','bg_color': '#333399',"font":
 format5 = wb.add_format({'bg_color': '#333399',"font": "Arial",
                               'font_color': '#FFFFFF','font_size': 12, 'align': 'center'})
 date_column = wb.add_format({'num_format': '[$-en-US]d-mmm;@',"font": "Arial", 'font_size': 12})
-date_column1 = wb.add_format({'num_format': '[$-en-US]d-mmm;@', 'bg_color': '#F2F2F2', "font": "Arial", 'font_size': 12})
+date_column1 = wb.add_format({'num_format': '[$-en-US]d-mmm;@', 'bg_color': '#F2F2F2', "font": "Arial", 
+                              'font_size': 12})
 format_header = wb.add_format({ 'bg_color': '#333399', 'bold': True,"font": "Arial",
                             'font_color': '#FFFFFF','font_size': 12})
 time_format1 = wb.add_format({'num_format': 'h:mm AM/PM','bg_color': '#333399', 'bold': True,"font": "Arial",
