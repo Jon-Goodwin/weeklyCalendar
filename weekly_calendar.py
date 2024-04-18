@@ -25,7 +25,7 @@ def partition_reorder(calendar: 'pl.dataframe.frame.Dataframe'):
     if new_countries:
         my_order.extend(new_countries)
         
-    return {k: calendar_dic[k] for k in my_order}
+    return {k: calendar_dic[k] for k in my_order if k in calendar_dic.keys()}
     
 def extend_frames(reordered_dict: 'dict'):
     """Extends the dataframes with a null row for the purpose of the final xlsx formatting
@@ -93,7 +93,10 @@ def recombine_calendar(reorded_dict):
         my_order.extend(new_countries)
     new_calendar = reordered_dict[my_order[0]].clear()
     for val in my_order:
-        new_calendar.extend(reordered_dict[val])
+        if val in reordered_dict.keys():
+            new_calendar.extend(reordered_dict[val])
+        else:
+            continue
     return new_calendar
 
 def rename_calendar(calendar: 'pl.dataframe.frame.DataFrame'):

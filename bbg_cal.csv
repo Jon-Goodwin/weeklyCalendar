@@ -1,148 +1,127 @@
 ﻿Date Time,,,,Event,,Survey,Actual,Prior,Revised,Relevance,Ticker
-03/31/2024 19:50,JN,1),,Tankan Large Mfg Index,1Q,10,11,12,13,88.8889,JNTSMFG Index
-03/31/2024 19:50,JN,2),,Tankan Large Mfg Outlook,1Q,10,10,8,--,82.2222,JPTFLMFG Index
-03/31/2024 19:50,JN,3),,Tankan Large Non-Mfg Index,1Q,32,34,30,32,80,JNTSNMFG Index
-03/31/2024 19:50,JN,4),,Tankan Large Non-Mfg Outlook,1Q,29,27,24,27,78.8889,JPTFLNMF Index
-03/31/2024 19:50,JN,5),,Tankan Large All Industry Capex,1Q,--,4.00%,13.50%,--,84.4444,JTFIFILA Index
-03/31/2024 19:50,JN,6),,Tankan Small Mfg Index,1Q,-1,-1,1,--,26.6667,JNTEMFG Index
-03/31/2024 19:50,JN,7),,Tankan Small Mfg Outlook,1Q,-2,0,-1,0,25.5556,JPTFSMFG Index
-03/31/2024 19:50,JN,8),,Tankan Small Non-Mfg Index,1Q,15,13,14,--,20,JNTENMFG Index
-03/31/2024 19:50,JN,9),,Tankan Small Non-Mfg Outlook,1Q,10,8,7,--,18.8889,JPTFSNMF Index
-03/31/2024 20:30,JN,10),,Jibun Bank Japan PMI Mfg,Mar F,--,48.2,48.2,--,90,MPMIJPMA Index
-03/31/2024 21:45,CH,11),,Caixin China PMI Mfg,Mar,51,51.1,50.9,--,92.4528,MPMICNMA Index
-04/01/2024 08:00,CA,12),,Bloomberg Nanos Confidence,Mar-29,--,53.2,52.9,--,21.0526,BNCCINDX Index
-04/01/2024 09:30,CA,13),,S&P Global Canada Manufacturing PMI,Mar,--,49.8,49.7,--,90,MPMICAMA Index
-04/01/2024 09:45,US,14),,S&P Global US Manufacturing PMI,Mar F,52.5,51.9,52.5,--,90,MPMIUSMA Index
-04/01/2024 10:00,US,15),,Construction Spending MoM,Feb,0.70%,-0.30%,-0.20%,--,78.4615,CNSTTMOM Index
-04/01/2024 10:00,US,16),,ISM Manufacturing,Mar,48.3,50.3,47.8,--,94.6154,NAPMPMI Index
-04/01/2024 10:00,US,17),,ISM Prices Paid,Mar,53,55.8,52.5,--,72.3077,NAPMPRIC Index
-04/01/2024 10:00,US,18),,ISM New Orders,Mar,49.8,51.4,49.2,--,20.7692,NAPMNEWO Index
-04/01/2024 10:00,US,19),,ISM Employment,Mar,47.5,47.4,45.9,--,12.3077,NAPMEMPL Index
-04/01/2024 10:30,CA,20),,BoC Business Outlook Future Sales,1Q,--,1,20,--,52.6316,BCBSFUTR Index
-04/01/2024 10:30,CA,21),,BoC Overall Business Outlook Survey,1Q,--,-2.4,-3.2,-3.1,10.5263,BCBSPC1 Index
-04/01/2024 19:01,UK,22),,BRC Shop Price Index YoY,Mar,2.20%,1.30%,2.50%,--,31.3953,BRCPALLY Index
-04/01/2024 19:50,JN,23),,Monetary Base YoY,Mar,--,1.60%,2.40%,--,75.5556,JNMBYOY Index
-04/01/2024 19:50,JN,24),,Monetary Base End of period,Mar,--,¥686.8t,¥664.6t,--,17.7778,JNMBMOBE Index
-04/02/2024 02:00,UK,25),,Nationwide House PX MoM,Mar,0.30%,-0.20%,0.70%,--,88.3721,UKNBAAMM Index
-04/02/2024 02:00,UK,26),,Nationwide House Px NSA YoY,Mar,2.40%,1.60%,1.20%,--,86.0465,UKNBANYY Index
-04/02/2024 03:45,IT,27),,HCOB Italy Manufacturing PMI,Mar,48.8,50.4,48.7,--,90,MPMIITMA Index
-04/02/2024 03:50,FR,28),,HCOB France Manufacturing PMI,Mar F,45.8,46.2,45.8,--,97.0588,MPMIFRMA Index
-04/02/2024 03:55,GE,29),,HCOB Germany Manufacturing PMI,Mar F,41.6,41.9,41.6,--,90,MPMIDEMA Index
-04/02/2024 04:00,EC,30),,HCOB Eurozone Manufacturing PMI,Mar F,45.7,46.1,45.7,--,90,MPMIEZMA Index
-04/02/2024 04:00,EC,31),,ECB 1 Year CPI Expectations,Feb,--,3.10%,3.30%,--,2.43902,ECIENDEA Index
-04/02/2024 04:00,EC,32),,ECB 3 Year CPI Expectations,Feb,2.40%,2.50%,2.50%,--,0,ECIETDEA Index
-04/02/2024 04:00,GE,33),,CPI Hesse MoM,Mar,--,0.30%,0.50%,--,40.3846,GRCP2HEM Index
-04/02/2024 04:00,GE,34),,CPI Hesse YoY,Mar,--,1.60%,2.10%,--,28.8462,GRCP2HEY Index
-04/02/2024 04:00,GE,35),,CPI Bavaria MoM,Mar,--,0.40%,0.50%,--,34.6154,GRCP2BVM Index
-04/02/2024 04:00,GE,36),,CPI Bavaria YoY,Mar,--,2.30%,2.60%,--,36.5385,GRCP2BVY Index
-04/02/2024 04:00,GE,37),,CPI Brandenburg MoM,Mar,--,0.40%,0.50%,--,30.7692,GRCP2BRM Index
-04/02/2024 04:00,GE,38),,CPI Brandenburg YoY,Mar,--,2.80%,3.50%,--,23.0769,GRCP2BRY Index
-04/02/2024 04:00,GE,39),,CPI Saxony MoM,Mar,--,0.40%,0.30%,--,42.3077,GRCP2SAM Index
-04/02/2024 04:00,GE,40),,CPI Saxony YoY,Mar,--,2.50%,3.00%,--,32.6923,GRCP2SAY Index
-04/02/2024 04:00,GE,41),,CPI Baden Wuerttemberg MoM,Mar,--,0.50%,0.30%,--,17.3077,GRCP2BWM Index
-04/02/2024 04:00,GE,42),,CPI Baden Wuerttemberg YoY,Mar,--,2.30%,2.70%,--,19.2308,GRCP2BWY Index
-04/02/2024 04:00,GE,43),,CPI North Rhine Westphalia MoM,Mar,--,0.30%,0.60%,--,48.0769,GRCP2NRM Index
-04/02/2024 04:00,GE,44),,CPI North Rhine Westphalia YoY,Mar,--,2.30%,2.60%,--,46.1538,GRCP2NRY Index
-04/02/2024 04:30,UK,45),,Net Consumer Credit,Feb,1.6b,1.4b,1.9b,1.8b,22.093,UKMSB3PS Index
-04/02/2024 04:30,UK,46),,Consumer Credit YoY,Feb,--,8.70%,8.90%,9.00%,11.6279,UKMSB4TC Index
-04/02/2024 04:30,UK,47),,Net Lending Sec. on Dwellings,Feb,-0.4b,1.5b,-1.1b,--,48.8372,UKMSVTVJ Index
-04/02/2024 04:30,UK,48),,Mortgage Approvals,Feb,56.5k,60.4k,55.2k,56.1k,83.7209,UKMSVTVX Index
-04/02/2024 04:30,UK,49),,Money Supply M4 MoM,Feb,--,0.50%,-0.10%,0.00%,56.9767,UKMSM41M Index
-04/02/2024 04:30,UK,50),,M4 Money Supply YoY,Feb,--,-1.20%,-2.20%,--,58.1395,UKMSM41Y Index
-04/02/2024 04:30,UK,51),,M4 Ex IOFCs 3M Annualised,Feb,--,3.90%,2.20%,2.30%,27.907,UKMS4QG Index
-04/02/2024 04:30,UK,52),,S&P Global UK Manufacturing PMI,Mar F,49.9,50.3,49.9,--,90,MPMIGBMA Index
-04/02/2024 08:00,GE,53),,CPI YoY,Mar P,2.20%,2.20%,2.50%,--,92.3077,GRCP20YY Index
-04/02/2024 08:00,GE,54),,CPI MoM,Mar P,0.50%,0.40%,0.40%,--,90.3846,GRCP20MM Index
-04/02/2024 08:00,GE,55),,CPI EU Harmonized MoM,Mar P,0.70%,0.60%,0.60%,--,73.0769,GRCP2HMM Index
-04/02/2024 08:00,GE,56),,CPI EU Harmonized YoY,Mar P,2.40%,2.30%,2.70%,--,80.7692,GRCP2HYY Index
-04/02/2024 10:00,US,57),,JOLTS Job Openings,Feb,8730k,8756k,8863k,8748k,49.2308,JOLTTOTL Index
-04/02/2024 10:00,US,58),,Factory Orders,Feb,1.00%,1.40%,-3.60%,-3.80%,84.6154,TMNOCHNG Index
-04/02/2024 10:00,US,59),,Factory Orders Ex Trans,Feb,0.50%,1.10%,-0.80%,-0.60%,13.0769,TMNOXTM% Index
-04/02/2024 10:00,US,60),,Durable Goods Orders,Feb F,1.40%,1.30%,1.40%,--,91.5385,DGNOCHNG Index
-04/02/2024 10:00,US,61),,Durables Ex Transportation,Feb F,0.50%,0.30%,0.50%,--,73.2308,DGNOXTCH Index
-04/02/2024 10:00,US,62),,Cap Goods Orders Nondef Ex Air,Feb F,0.70%,0.70%,0.70%,--,53.0769,CGNOXAI% Index
-04/02/2024 10:00,US,63),,Cap Goods Ship Nondef Ex Air,Feb F,--,-0.60%,-0.40%,--,50.7692,CGSHXAI% Index
-04/02/2024 12:00,IT,64),,New Car Registrations YoY,Mar,--,-3.71%,12.80%,12.85%,32.3529,ITVHYOY Index
-04/02/2024 20:30,JN,65),,Jibun Bank Japan PMI Composite,Mar F,--,51.7,52.3,--,70,MPMIJPCA Index
-04/02/2024 20:30,JN,66),,Jibun Bank Japan PMI Services,Mar F,--,54.1,54.9,--,70,MPMIJPSA Index
-04/02/2024 21:45,CH,67),,Caixin China PMI Composite,Mar,--,52.7,52.5,--,71.6981,MPMICNCA Index
-04/02/2024 21:45,CH,68),,Caixin China PMI Services,Mar,52.5,52.7,52.5,--,75.4717,MPMICNSA Index
-04/02/2024,IT,69),,Budget Balance,Mar,--,-29.1b,-16.0b,--,23.5294,ITBDNETE Index
-04/02/2024,US,70),,Wards Total Vehicle Sales,Mar,15.85m,15.49m,15.81m,--,42.3077,SAARTOTL Index
-04/03/2024 02:45,FR,71),,Budget Balance YTD,Feb,--,-44.0b,-25.7b,--,38.2353,FRBDEURO Index
-04/03/2024 04:00,IT,72),,Unemployment Rate,Feb,7.20%,7.50%,7.20%,7.30%,64.7059,ITMUURS Index
-04/03/2024 05:00,EC,73),,CPI Estimate YoY,Mar,2.50%,2.40%,2.60%,--,75.6098,ECCPEST Index
-04/03/2024 05:00,EC,74),,CPI MoM,Mar P,0.90%,0.80%,0.60%,--,85.3659,ECCPEMUM Index
-04/03/2024 05:00,EC,75),,CPI Core YoY,Mar P,3.00%,2.90%,3.10%,--,70.7317,CPEXEMUY Index
-04/03/2024 05:00,EC,76),,Unemployment Rate,Feb,6.40%,6.50%,6.40%,6.50%,68.2927,UMRTEMU Index
-04/03/2024 07:00,US,77),,MBA Mortgage Applications,Mar-29,--,-0.60%,-0.70%,--,89.2308,MBAVCHNG Index
-04/03/2024 08:15,US,78),,ADP Employment Change,Mar,150k,184k,140k,155k,90.7692,ADP CHNG Index
-04/03/2024 09:30,CA,79),,S&P Global Canada Composite PMI,Mar,--,47,47.1,--,2.63158,MPMICACA Index
-04/03/2024 09:30,CA,80),,S&P Global Canada Services PMI,Mar,--,46.4,46.6,--,0,MPMICASA Index
-04/03/2024 09:45,US,81),,S&P Global US Services PMI,Mar F,51.7,51.7,51.7,--,70,MPMIUSSA Index
-04/03/2024 09:45,US,82),,S&P Global US Composite PMI,Mar F,--,52.1,52.2,--,70,MPMIUSCA Index
-04/03/2024 10:00,US,83),,ISM Services Index,Mar,52.8,51.4,52.6,--,79.2308,NAPMNMI Index
-04/03/2024 10:00,US,84),,ISM Services Prices Paid,Mar,58.4,53.4,58.6,--,6.15385,NAPMNPRC Index
-04/03/2024 10:00,US,85),,ISM Services Employment,Mar,49,48.5,48,--,4.61538,NAPMNEMP Index
-04/03/2024 10:00,US,86),,ISM Services New Orders,Mar,55.5,54.4,56.1,--,5.38462,NAPMNNO Index
-04/03/2024 19:50,JN,87),,Foreign Buying Japan Stocks,Mar-29,--,-¥441.3b,-¥891.4b,-¥889.6b,51.1111,JSIHSTCK Index
-04/03/2024 19:50,JN,88),,Japan Buying Foreign Bonds,Mar-29,--,-¥1660.5b,¥762.3b,¥764.6b,56.6667,JSIABOND Index
-04/03/2024 19:50,JN,89),,Foreign Buying Japan Bonds,Mar-29,--,¥842.2b,-¥3892.5b,--,47.7778,JSIHBOND Index
-04/03/2024 19:50,JN,90),,Japan Buying Foreign Stocks,Mar-29,--,-¥233.6b,¥81.9b,¥82.1b,43.3333,JSIASTCK Index
-04/04/2024 03:45,IT,91),,HCOB Italy Composite PMI,Mar,52,53.5,51.1,--,70,MPMIITCA Index
-04/04/2024 03:45,IT,92),,HCOB Italy Services PMI,Mar,53.1,54.6,52.2,--,70,MPMIITSA Index
-04/04/2024 03:50,FR,93),,HCOB France Composite PMI,Mar F,47.7,48.3,47.7,--,88.2353,MPMIFRCA Index
-04/04/2024 03:50,FR,94),,HCOB France Services PMI,Mar F,47.8,48.3,47.8,--,91.1765,MPMIFRSA Index
-04/04/2024 03:55,GE,95),,HCOB Germany Services PMI,Mar F,49.8,50.1,49.8,--,76.9231,MPMIDESA Index
-04/04/2024 03:55,GE,96),,HCOB Germany Composite PMI,Mar F,47.4,47.7,47.4,--,71.1538,MPMIDECA Index
-04/04/2024 04:00,EC,97),,HCOB Eurozone Services PMI,Mar F,51.1,51.5,51.1,--,70,MPMIEZSA Index
-04/04/2024 04:00,EC,98),,HCOB Eurozone Composite PMI,Mar F,49.9,50.3,49.9,--,73.1707,MPMIEZCA Index
-04/04/2024 04:00,UK,99),,New Car Registrations YoY,Mar,--,10.40%,14.00%,--,50,UKVHRYY Index
-04/04/2024 04:30,UK,100),,Official Reserves Changes,Mar,--,$2310m,-$631m,--,47.6744,UKCR Index
-04/04/2024 04:30,UK,101),,DMP 3M Output Price Expectations,Mar,4.20%,4.10%,4.30%,--,2.32558,UKDDEPAV Index
-04/04/2024 04:30,UK,102),,DMP 1 Year CPI Expectations,Mar,3.20%,3.20%,3.30%,--,3.48837,UKDDCPI1 Index
-04/04/2024 04:30,UK,103),,S&P Global UK Services PMI,Mar F,53.4,53.1,53.4,--,79.0698,MPMIGBSA Index
-04/04/2024 04:30,UK,104),,S&P Global UK Composite PMI,Mar F,52.9,52.8,52.9,--,70,MPMIGBCA Index
-04/04/2024 05:00,EC,105),,PPI MoM,Feb,-0.70%,-1.00%,-0.90%,--,46.3415,EUPPEMUM Index
-04/04/2024 05:00,EC,106),,PPI YoY,Feb,-8.60%,-8.30%,-8.60%,-8.00%,48.7805,EUPPEMUY Index
-04/04/2024 07:30,US,107),,Challenger Job Cuts YoY,Mar,--,0.70%,8.80%,--,36.1538,CHALYOY% Index
-04/04/2024 08:30,US,108),,Trade Balance,Feb,-$67.6b,-$68.9b,-$67.4b,-$67.6b,82.3077,USTBTOT Index
-04/04/2024 08:30,CA,109),,Int'l Merchandise Trade,Feb,0.68b,1.39b,0.50b,0.61b,57.8947,CATBTOTB Index
-04/04/2024 08:30,US,110),,Initial Jobless Claims,Mar-30,214k,221k,210k,212k,98.4615,INJCJC Index
-04/04/2024 08:30,US,111),,Continuing Claims,Mar-23,1811k,1791k,1819k,1810k,68.9231,INJCSP Index
-04/04/2024 19:30,JN,112),,Household Spending YoY,Feb,-2.90%,--,-6.30%,--,55.5556,JHHSLERY Index
-04/05/2024 01:00,JN,113),,Leading Index CI,Feb P,111.6,--,109.5,--,58.8889,JNCICLEI Index
-04/05/2024 01:00,JN,114),,Coincident Index,Feb P,110.9,--,112.1,--,37.7778,JNCICCOI Index
-04/05/2024 02:00,GE,115),,Import Price Index MoM,Feb,0.00%,--,0.00%,--,25,GRIMP95M Index
-04/05/2024 02:00,GE,116),,Import Price Index YoY,Feb,-4.60%,--,-5.90%,--,21.1538,GRIMP95Y Index
-04/05/2024 02:00,GE,117),,Factory Orders MoM,Feb,0.70%,--,-11.30%,--,84.6154,GRIORTMM Index
-04/05/2024 02:00,GE,118),,Factory Orders WDA YoY,Feb,-10.10%,--,-6.00%,--,55.7692,GEIOYY Index
-04/05/2024 02:45,FR,119),,Industrial Production MoM,Feb,0.40%,--,-1.10%,--,85.2941,FPIPMOM Index
-04/05/2024 02:45,FR,120),,Industrial Production YoY,Feb,-0.10%,--,0.80%,--,79.4118,FPIPYOY Index
-04/05/2024 02:45,FR,121),,Manufacturing Production MoM,Feb,1.20%,--,-1.60%,--,58.8235,FRMPMOM Index
-04/05/2024 02:45,FR,122),,Manufacturing Production YoY,Feb,--,--,0.10%,--,55.8824,FRMPYOY Index
-04/05/2024 03:30,GE,123),,HCOB Germany Construction PMI,Mar,--,--,39.1,--,50,MPMIDEXA Index
-04/05/2024 04:30,UK,124),,S&P Global UK Construction PMI,Mar,49.9,--,49.7,--,76.7442,MPMIGBXA Index
-04/05/2024 05:00,EC,125),,Retail Sales MoM,Feb,-0.40%,--,0.10%,--,53.6585,RSSAEMUM Index
-04/05/2024 05:00,EC,126),,Retail Sales YoY,Feb,-0.80%,--,-1.00%,--,51.2195,RSWAEMUY Index
-04/05/2024 05:00,IT,127),,Deficit to GDP YTD,4Q,--,--,7.10%,--,8.82353,ITDDGQ Index
-04/05/2024 08:30,CA,128),,Net Change in Employment,Mar,25.0k,--,40.7k,--,84.2105,CANLNETJ Index
-04/05/2024 08:30,CA,129),,Part Time Employment Change,Mar,--,--,-29.9k,--,31.5789,CANLPTNC Index
-04/05/2024 08:30,CA,130),,Full Time Employment Change,Mar,--,--,70.6k,--,36.8421,CANLFLNC Index
-04/05/2024 08:30,CA,131),,Unemployment Rate,Mar,5.90%,--,5.80%,--,92.1053,CANLXEMR Index
-04/05/2024 08:30,CA,132),,Hourly Wage Rate Permanent Employees YoY,Mar,5.00%,--,4.90%,--,7.89474,CAHEPERM Index
-04/05/2024 08:30,CA,133),,Participation Rate,Mar,--,--,65.30%,--,34.2105,CANLPRTR Index
-04/05/2024 08:30,US,134),,Two-Month Payroll Net Revision,Mar,--,--,--,--,22.3077,ECONGECC Index
-04/05/2024 08:30,US,135),,Change in Nonfarm Payrolls,Mar,213k,--,275k,--,99.2308,NFP TCH Index
-04/05/2024 08:30,US,136),,Change in Private Payrolls,Mar,170k,--,223k,--,35.3846,NFP PCH Index
-04/05/2024 08:30,US,137),,Change in Manufact. Payrolls,Mar,0k,--,-4k,--,69.4615,USMMMNCH Index
-04/05/2024 08:30,US,138),,Unemployment Rate,Mar,3.80%,--,3.90%,--,89.3077,USURTOT Index
-04/05/2024 08:30,US,139),,Average Hourly Earnings MoM,Mar,0.30%,--,0.10%,--,39.2308,AHE MOM% Index
-04/05/2024 08:30,US,140),,Average Hourly Earnings YoY,Mar,4.10%,--,4.30%,--,38.4615,AHE YOY% Index
-04/05/2024 08:30,US,141),,Average Weekly Hours All Employees,Mar,34.3,--,34.3,--,28.4615,AWH TOTL Index
-04/05/2024 08:30,US,142),,Labor Force Participation Rate,Mar,62.50%,--,62.50%,--,26.1538,PRUSTOT Index
-04/05/2024 08:30,US,143),,Underemployment Rate,Mar,--,--,7.30%,--,26.9231,USUDMAER Index
-04/05/2024 10:00,CA,144),,Ivey Purchasing Managers Index SA,Mar,--,--,53.9,--,28.9474,IVEYSA Index
-04/05/2024 15:00,US,145),,Consumer Credit,Feb,$15.700b,--,$19.495b,--,41.5385,CICRTOT Index
+04/14/2024 19:50,JN,1),,Core Machine Orders MoM,Feb,0.80%,7.70%,-1.70%,--,91.1111,JNMOCHNG Index
+04/14/2024 19:50,JN,2),,Core Machine Orders YoY,Feb,-6.00%,-1.80%,-10.90%,--,62.2222,JNMOYOY Index
+04/14/2024 21:20,CH,3),,1-Yr Medium-Term Lending Facility Rate,Apr-15,2.50%,2.50%,2.50%,--,33.9623,CHLLM1YR Index
+04/14/2024 21:20,CH,4),,1-Yr Medium-Term Lending Facilities Volume,Apr-15,170.0b,100.0b,387.0b,--,18.8679,CHLLM1YV Index
+04/15/2024 02:30,EC,5),,SURVEY REPORT: Euro Area Economic Forecasts in April 2024,,,,,,0,
+04/15/2024 02:35,GE,6),,SURVEY REPORT: Germany Economic Forecasts in April 2024,,,,,,0,
+04/15/2024 02:40,FR,7),,Bloomberg April France Economic Survey,,,,,,0,
+04/15/2024 02:45,IT,8),,Bloomberg April Italy Economic Survey,,,,,,0,
+04/15/2024 04:30,IT,9),,General Government Debt,Feb,--,2872.4b,2848.7b,2849.5b,0,ITGGTOTE Index
+04/15/2024 05:00,EC,10),,Industrial Production SA MoM,Feb,0.80%,0.80%,-3.20%,-3.00%,58.5366,EUITEMUM Index
+04/15/2024 05:00,EC,11),,Industrial Production WDA YoY,Feb,-5.50%,-6.40%,-6.70%,-6.60%,56.0976,EUIPEMUY Index
+04/15/2024 08:00,CA,12),,Bloomberg Nanos Confidence,Apr-12,--,52.5,53.3,--,21.0526,BNCCINDX Index
+04/15/2024 08:30,CA,13),,Manufacturing Sales MoM,Feb,0.70%,0.70%,0.20%,0.00%,63.1579,CAMFCHNG Index
+04/15/2024 08:30,CA,14),,Wholesale Sales ex Petroleum MoM,Feb,0.80%,0.00%,0.10%,-0.20%,55.2632,CAWTMOM Index
+04/15/2024 08:30,US,15),,Empire Manufacturing,Apr,-5.2,-14.3,-20.9,--,83.0769,EMPRGBCI Index
+04/15/2024 08:30,US,16),,Retail Sales Advance MoM,Mar,0.40%,0.70%,0.60%,0.90%,93.0769,RSTAMOM Index
+04/15/2024 08:30,US,17),,Retail Sales Ex Auto MoM,Mar,0.50%,1.10%,0.30%,0.60%,65.1538,RSTAXMOM Index
+04/15/2024 08:30,US,18),,Retail Sales Ex Auto and Gas,Mar,0.30%,1.00%,0.30%,0.50%,56.9231,RSTAXAG% Index
+04/15/2024 08:30,US,19),,Retail Sales Control Group,Mar,0.40%,1.10%,0.00%,0.30%,24.6154,RSTAXAGM Index
+04/15/2024 10:00,US,20),,Business Inventories,Feb,0.40%,0.40%,0.00%,--,36.9231,MTIBCHNG Index
+04/15/2024 10:00,US,21),,NAHB Housing Market Index,Apr,51,51,51,--,43.8462,USHBMIDX Index
+04/15/2024 21:30,CH,22),,New Home Prices MoM,Mar,--,-0.34%,-0.36%,--,35.8491,CHHEAVGM Index
+04/15/2024 21:30,CH,23),,Used Home Prices MoM,Mar,--,-0.53%,-0.62%,--,3.77358,CHHEAVSM Index
+04/15/2024 22:00,CH,24),,GDP YoY,1Q,4.80%,5.30%,5.20%,--,96.2264,CNGDPYOY Index
+04/15/2024 22:00,CH,25),,GDP SA QoQ,1Q,1.50%,1.60%,1.00%,1.20%,58.4906,CNGDPQOQ Index
+04/15/2024 22:00,CH,26),,GDP YTD YoY,1Q,4.80%,5.30%,5.20%,--,66.0377,CNGDPC$Y Index
+04/15/2024 22:00,CH,27),,Industrial Production YoY,Mar,6.00%,4.50%,--,--,88.6792,CHVAIOY Index
+04/15/2024 22:00,CH,28),,Industrial Production YTD YoY,Mar,6.60%,6.10%,7.00%,--,67.9245,CHVAICY Index
+04/15/2024 22:00,CH,29),,Retail Sales YoY,Mar,4.80%,3.10%,--,--,84.9057,CNRSCYOY Index
+04/15/2024 22:00,CH,30),,Retail Sales YTD YoY,Mar,5.40%,4.70%,5.50%,--,62.2642,CNRSACMY Index
+04/15/2024 22:00,CH,31),,Fixed Assets Ex Rural YTD YoY,Mar,4.00%,4.50%,4.20%,--,64.1509,CNFAYOY Index
+04/15/2024 22:00,CH,32),,Property Investment YTD YoY,Mar,-9.20%,-9.50%,-9.00%,--,30.1887,CHRXCINY Index
+04/15/2024 22:00,CH,33),,Residential Property Sales YTD YoY,Mar,--,-30.70%,-32.70%,--,7.54717,CHRXSARY Index
+04/15/2024 22:00,CH,34),,Surveyed Jobless Rate,Mar,5.20%,5.20%,5.30%,--,26.4151,CNUESRU Index
+04/16/2024 02:00,GE,35),,Wholesale Price Index YoY,Mar,--,-3.00%,-3.00%,--,7.69231,GRWPYOYI Index
+04/16/2024 02:00,GE,36),,Wholesale Price Index MoM,Mar,--,0.20%,-0.10%,--,9.61538,GRWPMOMI Index
+04/16/2024 02:00,UK,37),,Average Weekly Earnings 3M/YoY,Feb,5.50%,5.60%,5.60%,--,69.7674,UKAWMWHO Index
+04/16/2024 02:00,UK,38),,Weekly Earnings ex Bonus 3M/YoY,Feb,5.80%,6.00%,6.10%,--,38.3721,UKAWXTOM Index
+04/16/2024 02:00,UK,39),,ILO Unemployment Rate 3Mths,Feb,4.00%,4.20%,3.90%,4.00%,89.5349,UKUEILOR Index
+04/16/2024 02:00,UK,40),,Employment Change 3M/3M,Feb,74k,-156k,-21k,-89k,24.4186,UKLFEMCH Index
+04/16/2024 02:00,UK,41),,Payrolled Employees Monthly Change,Mar,20k,-67k,20k,-18k,8.13953,UKPYPEMC Index
+04/16/2024 02:00,UK,42),,Claimant Count Rate,Mar,--,4.00%,4.00%,--,81.3953,UKUER Index
+04/16/2024 02:00,UK,43),,Jobless Claims Change,Mar,--,10.9k,16.8k,4.1k,91.8605,UKUEMOM Index
+04/16/2024 03:30,UK,44),,SURVEY REPORT: UK Economic Forecasts in April 2024,,,,,,0,
+04/16/2024 04:00,IT,45),,CPI EU Harmonized YoY,Mar F,1.30%,1.20%,1.30%,--,94.1176,ITCPEY Index
+04/16/2024 04:00,IT,46),,CPI FOI Index Ex Tobacco,Mar,--,119.4,119.3,--,2.94118,ITCPI Index
+04/16/2024 05:00,GE,47),,ZEW Survey Expectations,Apr,35.5,42.9,31.7,--,96.1538,GRZEWI Index
+04/16/2024 05:00,GE,48),,ZEW Survey Current Situation,Apr,-76,-79.2,-80.5,--,94.2308,GRZECURR Index
+04/16/2024 05:00,EC,49),,ZEW Survey Expectations,Apr,--,43.9,33.5,--,60.9756,GRZEEUEX Index
+04/16/2024 05:00,EC,50),,Trade Balance SA,Feb,21.8b,17.9b,28.1b,27.1b,24.3902,XTSBEZ Index
+04/16/2024 05:00,EC,51),,Trade Balance NSA,Feb,--,23.6b,11.4b,--,21.9512,XTTBEZ Index
+04/16/2024 05:00,IT,52),,Trade Balance Total,Feb,--,6034m,2655m,2495m,35.2941,ITTRALEE Index
+04/16/2024 05:00,IT,53),,Trade Balance EU,Feb,--,-851m,-376m,-536m,11.7647,ITTRALEX Index
+04/16/2024 08:15,CA,54),,Housing Starts,Mar,243.5k,242.2k,253.5k,260.0k,78.9474,CAHSTOTL Index
+04/16/2024 08:30,US,55),,Housing Starts,Mar,1485k,1321k,1521k,1549k,87.6923,NHSPSTOT Index
+04/16/2024 08:30,US,56),,Building Permits,Mar,1510k,1458k,1518k,1523k,61.3846,NHSPATOT Index
+04/16/2024 08:30,US,57),,Housing Starts MoM,Mar,-2.40%,-14.70%,10.70%,12.70%,32.3077,NHCHSTCH Index
+04/16/2024 08:30,US,58),,Building Permits MoM,Mar,-0.90%,-4.30%,1.90%,2.30%,29.2308,NHCHATCH Index
+04/16/2024 08:30,CA,59),,CPI NSA MoM,Mar,0.70%,0.60%,0.30%,--,89.4737,CACPICHG Index
+04/16/2024 08:30,US,60),,New York Fed Services Business Activity,Apr,--,-0.6,0.6,--,2.30769,NYBLCNBA Index
+04/16/2024 08:30,CA,61),,CPI YoY,Mar,2.90%,2.90%,2.80%,--,94.7368,CACPIYOY Index
+04/16/2024 08:30,CA,62),,Consumer Price Index,Mar,159.9,159.8,158.8,--,26.3158,CACPI Index
+04/16/2024 08:30,CA,63),,CPI Core- Median YoY%,Mar,3.00%,2.80%,3.10%,3.00%,18.4211,CACPMYOY Index
+04/16/2024 08:30,CA,64),,CPI Core- Trim YoY%,Mar,3.20%,3.10%,3.20%,--,15.7895,CACPTYOY Index
+04/16/2024 09:15,US,65),,Industrial Production MoM,Mar,0.40%,0.40%,0.10%,0.40%,86.9231,IP CHNG Index
+04/16/2024 09:15,US,66),,Capacity Utilization,Mar,78.50%,78.40%,78.30%,78.20%,60.8462,CPTICHNG Index
+04/16/2024 09:15,US,67),,Manufacturing (SIC) Production,Mar,0.20%,0.50%,0.80%,1.20%,20,IPMGCHNG Index
+04/16/2024 19:50,JN,68),,Trade Balance,Mar,¥345.5b,¥366.5b,-¥379.4b,-¥377.8b,65.5556,JNTBAL Index
+04/16/2024 19:50,JN,69),,Trade Balance Adjusted,Mar,-¥302.5b,-¥701.5b,-¥451.6b,-¥566.2b,48.8889,JNTBALA Index
+04/16/2024 19:50,JN,70),,Exports YoY,Mar,7.00%,7.30%,7.80%,--,50,JNTBEXPY Index
+04/16/2024 19:50,JN,71),,Imports YoY,Mar,-5.10%,-4.90%,0.50%,--,42.2222,JNTBIMPY Index
+04/17/2024 02:00,UK,72),,CPI MoM,Mar,0.40%,0.60%,0.60%,--,96.5116,UKRPCJMR Index
+04/17/2024 02:00,UK,73),,CPI YoY,Mar,3.10%,3.20%,3.40%,--,97.6744,UKRPCJYR Index
+04/17/2024 02:00,UK,74),,CPI Core YoY,Mar,4.10%,4.20%,4.50%,--,93.0233,UKHCA9IQ Index
+04/17/2024 02:00,UK,75),,CPI Services YoY,Mar,5.80%,6.00%,6.10%,--,1.16279,UKHPSERY Index
+04/17/2024 02:00,UK,76),,CPIH YoY,Mar,3.60%,3.80%,3.80%,--,23.2558,UKHCCPIY Index
+04/17/2024 02:00,UK,77),,Retail Price Index,Mar,382.7,383,381,--,68.6047,UKRPI Index
+04/17/2024 02:00,UK,78),,RPI MoM,Mar,0.40%,0.50%,0.80%,--,73.2558,UKRPMOM Index
+04/17/2024 02:00,UK,79),,RPI YoY,Mar,4.20%,4.30%,4.50%,--,70.9302,UKRPYOY Index
+04/17/2024 02:00,UK,80),,RPI Ex Mort Int.Payments (YoY),Mar,3.20%,3.30%,3.50%,--,54.6512,UKRPXYOY Index
+04/17/2024 02:00,UK,81),,PPI Output NSA MoM,Mar,0.20%,0.20%,0.30%,--,13.9535,UKPPB7SM Index
+04/17/2024 02:00,UK,82),,PPI Output NSA YoY,Mar,0.60%,0.60%,0.40%,--,12.7907,UKPPB7SY Index
+04/17/2024 02:00,UK,83),,PPI Input NSA MoM,Mar,0.10%,-0.10%,-0.40%,0.30%,6.97674,UKPPHIPM Index
+04/17/2024 02:00,UK,84),,PPI Input NSA YoY,Mar,-2.70%,-2.50%,-2.70%,-2.20%,9.30233,UKPPHIPY Index
+04/17/2024 04:30,UK,85),,House Price Index YoY,Feb,--,-0.20%,-0.60%,-1.30%,29.0698,UKLHUKY Index
+04/17/2024 05:00,EC,86),,CPI YoY,Mar F,2.40%,2.40%,2.40%,2.60%,95.122,ECCPEMUY Index
+04/17/2024 05:00,EC,87),,CPI MoM,Mar F,0.80%,0.80%,0.80%,--,85.3659,ECCPEMUM Index
+04/17/2024 05:00,EC,88),,CPI Core YoY,Mar F,2.90%,2.90%,2.90%,--,70.7317,CPEXEMUY Index
+04/17/2024 07:00,US,89),,MBA Mortgage Applications,Apr-12,--,3.30%,0.10%,--,89.2308,MBAVCHNG Index
+04/17/2024 08:30,CA,90),,Int'l Securities Transactions,Feb,--,-8.78b,8.88b,--,44.7368,CAITFICS Index
+04/17/2024 14:00,US,91),,Federal Reserve Releases Beige Book,,,,,,0,
+04/17/2024 16:00,US,92),,Total Net TIC Flows,Feb,--,$51.6b,-$8.8b,-$30.8b,61.5385,FRNTTNET Index
+04/17/2024 16:00,US,93),,Net Long-term TIC Flows,Feb,--,$71.5b,$36.1b,$14.0b,70,FRNTTOTL Index
+04/17/2024 19:50,JN,94),,Japan Buying Foreign Stocks,Apr-12,--,¥53.9b,-¥301.8b,-¥293.2b,43.3333,JSIASTCK Index
+04/17/2024 19:50,JN,95),,Japan Buying Foreign Bonds,Apr-12,--,-¥1005.9b,¥346.4b,¥347.9b,56.6667,JSIABOND Index
+04/17/2024 19:50,JN,96),,Foreign Buying Japan Bonds,Apr-12,--,¥50.7b,-¥349.0b,-¥348.9b,47.7778,JSIHBOND Index
+04/17/2024 19:50,JN,97),,Foreign Buying Japan Stocks,Apr-12,--,¥1740.0b,¥1764.4b,¥1764.9b,52.2222,JSIHSTCK Index
+04/17/2024 21:00,CH,98),,Swift Global Payments CNY,Mar,--,4.69%,4.00%,--,28.3019,SWFTCNY Index
+04/18/2024 00:30,JN,99),,Tertiary Industry Index MoM,Feb,0.50%,1.50%,0.30%,-0.50%,87.7778,JNTIAMOM Index
+04/18/2024 01:00,JN,100),,Tokyo Condominiums for Sale YoY,Mar,--,0.50%,-27.60%,--,46.6667,JNC SALE Index
+04/18/2024 02:00,JN,101),,Machine Tool Orders YoY,Mar F,--,-3.80%,-3.80%,--,66.6667,JNMTOY Index
+04/18/2024 02:00,EC,102),,EU27 New Car Registrations,Mar,--,-5.20%,10.10%,--,36.5854,WCAR25 Y Index
+04/18/2024 02:06,CH,103),,FX Net Settlement - Clients CNY,Mar,--,-145.1b,-43.1b,--,24.5283,CNFZNCC Index
+04/18/2024 04:00,EC,104),,ECB Current Account SA,Feb,--,29.5b,39.4b,39.3b,29.2683,EUSATOTN Index
+04/18/2024 04:30,IT,105),,Current Account Balance,Feb,--,2306m,-1091m,--,26.4706,ITCAEUR Index
+04/18/2024 05:00,EC,106),,Construction Output MoM,Feb,--,1.80%,0.50%,0.20%,19.5122,EUCPTSAM Index
+04/18/2024 05:00,EC,107),,Construction Output YoY,Feb,--,-0.40%,0.80%,-0.30%,17.0732,EUCPTWDY Index
+04/18/2024 08:30,US,108),,Philadelphia Fed Business Outlook,Apr,2,15.5,3.2,--,76.9231,OUTFGAF Index
+04/18/2024 08:30,US,109),,Initial Jobless Claims,Apr-13,215k,212k,211k,212k,98.4615,INJCJC Index
+04/18/2024 08:30,US,110),,Continuing Claims,Apr-06,1818k,1812k,1817k,1810k,68.9231,INJCSP Index
+04/18/2024 10:00,US,111),,Leading Index,Mar,-0.10%,--,0.10%,--,81.5385,LEI CHNG Index
+04/18/2024 10:00,US,112),,Existing Home Sales,Mar,4.20m,--,4.38m,--,86.1538,ETSLTOTL Index
+04/18/2024 10:00,US,113),,Existing Home Sales MoM,Mar,-4.10%,--,9.50%,--,47.6923,ETSLMOM Index
+04/18/2024 19:30,JN,114),,Natl CPI YoY,Mar,2.80%,--,2.80%,--,90,JNCPIYOY Index
+04/18/2024 19:30,JN,115),,Natl CPI Ex Fresh Food YoY,Mar,2.70%,--,2.80%,--,68.8889,JNCPIXFF Index
+04/18/2024 19:30,JN,116),,"Natl CPI Ex Fresh Food, Energy YoY",Mar,3.00%,--,3.20%,--,23.3333,JCPNEFFE Index
+04/17/2024 04/20,CH,117),,FDI YTD YoY CNY,Mar,--,--,-19.90%,--,15.0943,CNDIACRY Index
+04/19/2024 02:00,UK,118),,Retail Sales Inc Auto Fuel MoM,Mar,0.30%,--,0.00%,--,82.5581,UKRVINFM Index
+04/19/2024 02:00,UK,119),,Retail Sales Inc Auto Fuel YoY,Mar,1.00%,--,-0.40%,--,80.2326,UKRVINFY Index
+04/19/2024 02:00,UK,120),,Retail Sales Ex Auto Fuel MoM,Mar,0.30%,--,0.20%,--,77.907,UKRVAMOM Index
+04/19/2024 02:00,UK,121),,Retail Sales Ex Auto Fuel YoY,Mar,1.00%,--,-0.50%,--,75.5814,UKRVAYOY Index
+04/19/2024 02:00,GE,122),,PPI MoM,Mar,0.10%,--,-0.40%,--,51.9231,GRPFIMOM Index
+04/19/2024 02:00,GE,123),,PPI YoY,Mar,-3.30%,--,-4.10%,--,50,GRPFIYOY Index
+04/19/2024 09:00,US,124),,Bloomberg April United States Economic Survey,,,,,,0,
 ,,,,,,,,,,,
-Download time: 04APR2024_10:35:55.236108,,,,,,,,,,,
+Download time: 18APR2024_09:05:00.929990,,,,,,,,,,,
