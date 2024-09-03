@@ -1,2 +1,3 @@
 # weeklyCalendar
- Create the weekly calendar from bbg eco calendar
+
+Create a nicely formatted calendar of economic events in major countries in excel
