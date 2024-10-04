@@ -164,16 +164,16 @@ calendar = calendar.sort(['Country', 'Date Time'])
 
 header = ['Economic Calendar of Events / Calendrier économique des événements','',
           '','','','Updated:', '=NOW()', '=NOW()']
-header2 = ['CANADA','Country','Event','Month / mois',
-               'Actual / Actuel', 'Forecast / Prévision', 'Previous / Précédant', 'Revised / Révisé']
-header3 = ['UNITED STATES/ETATS-UNIS','','','Month / mois',
-               'Actual / Actuel', 'Forecast / Prévision', 'Previous / Précédant', 'Revised / Révisé']
-header4 = ['OTHER','','','Month / mois',
-               'Actual / Actuel', 'Forecast / Prévision', 'Previous / Précédant', 'Revised / Révisé']
+header2 = ['CANADA','Country','Event','Month / mois', 'Forecast / Prévision',
+               'Actual / Actuel', 'Previous / Précédant', 'Revised / Révisé']
+header3 = ['UNITED STATES/ETATS-UNIS','','','Month / mois', 'Forecast / Prévision',
+               'Actual / Actuel', 'Previous / Précédant', 'Revised / Révisé']
+header4 = ['OTHER','','','Month / mois', 'Forecast / Prévision',
+               'Actual / Actuel', 'Previous / Précédant', 'Revised / Révisé']
 footer1 = ['','','','', '', '', 'Briefing Line: 782-7000', '']
 footer2 = ['','','','Pg 9', '', '', 'Rel. 2.8', '']
-CaD_col = ['CANADA','','','Month / mois',
-               'Actual / Actuel', 'Forecast / Prévision', 'Previous / Précédant', 'Revised / Révisé']
+CaD_col = ['CANADA','','','Month / mois', 'Forecast / Prévision'
+               'Actual / Actuel', 'Previous / Précédant', 'Revised / Révisé']
 calendar = rename_calendar(calendar)
 
 reordered_dict = partition_reorder(calendar)
