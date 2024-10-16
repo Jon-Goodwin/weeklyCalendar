@@ -172,7 +172,7 @@ header4 = ['OTHER','','','Month / mois', 'Forecast / Prévision',
                'Actual / Actuel', 'Previous / Précédant', 'Revised / Révisé']
 footer1 = ['','','','', '', '', 'Briefing Line: 782-7000', '']
 footer2 = ['','','','Pg 9', '', '', 'Rel. 2.8', '']
-CaD_col = ['CANADA','','','Month / mois', 'Forecast / Prévision'
+CaD_col = ['CANADA','','','Month / mois', 'Forecast / Prévision',
                'Actual / Actuel', 'Previous / Précédant', 'Revised / Révisé']
 calendar = rename_calendar(calendar)
 
@@ -187,6 +187,8 @@ new_calendar = recombine_calendar(reordered_dict)
 excel_base_date = pl.date('1900','1','1')
 new_calendar = new_calendar.with_columns(
     pl.col("CANADA").cast(pl.Datetime).dt.timestamp("ms").truediv(86400000).add(25569).alias("CANADA"))
+
+
 
 df1 = new_calendar.to_pandas()
 df1.dtypes
@@ -229,7 +231,7 @@ worksheet.set_column(0,0, 15, cell_format = date_column)
 worksheet.set_column(1,1, 10, cell_format = bold_column)
 worksheet.set_column(2,2, 40, cell_format = size_column)
 worksheet.set_column(3,3, 15, cell_format = size_column)
-worksheet.set_column(4,4, 25, cell_format = bold_column)
+worksheet.set_column(4,4, 25, cell_format = size_column)
 worksheet.set_column(5,10, 25, cell_format = size_column)
 
 #write headers and footers
@@ -270,7 +272,7 @@ for i in range(3,len(index),2):
 worksheet.set_row(0, 1)
 
 #set conditional formatting
-worksheet.conditional_format('E1:E200', {'type': 'no_errors',
+worksheet.conditional_format('F1:F200', {'type': 'no_errors',
                                           'format': bold_column})
 worksheet.conditional_format('B1:B200', {'type': 'no_errors',
                                           'format': bold_column})
